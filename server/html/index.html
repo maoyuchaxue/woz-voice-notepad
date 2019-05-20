@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Voice Notepad Wizard Panel</title>
+        <meta charset="gbk"/>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+        <link href="/lib/css/vendor/bootstrap.min.css" rel="stylesheet">
+        <link href="/lib/css/flat-ui.css" rel="stylesheet">    
+        <link rel="stylesheet" href="/stylesheets/style.css"/>
+    </head>
+
+    <body>
+        <div id="root">
+            <div id="msg-box" class="flex-with-title">
+                <div id="msg-title" class="flex-title">用户消息</div>
+                <div id="msg-list" class="flex-remains">
+                    <div v-for="msg in msgs" class="message" v-on:mouseup.alt.exact="copyToClipboard()">{{msg}}</div>
+                </div>
+            </div>
+            <div id="edit-box" class="flex-with-title">
+                <span id="edit-title" class="flex-title">现有文本</span>
+                <textarea id="edit-inner-box" class="flex-remains" type="text" v-on:mouseup.alt.exact="sendReadResult()">
+                </textarea>
+            </div>
+        </div>
+        <script src="/lib/scripts/jquery-3.3.1.min.js"></script>
+        <script src="/lib/scripts/popper.min.js"></script>
+        <script src="/lib/scripts/flat-ui.js"></script>
+        <script src="/javascripts/socket.io.js"></script>
+        <script src="/javascripts/index.js"></script>
+        <script>
+            index();
+        </script>
+    </body>
+</html>
